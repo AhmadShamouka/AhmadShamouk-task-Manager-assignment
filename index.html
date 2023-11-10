@@ -1,48 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task List</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-
+ 
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
     
     <div class="outerdiv">
-        <h3>Task Manager</h3>
+        <h3>test</h3>
         <input type="text" id="task-input" placeholder="Enter a task">
-        <button class="addbtn" id="add-task">Add</button>
+        <div class="btns">
+            <button class="addbtn" id="add-task">Add</button>
+            <button class="sortbtn" id="sort-task">Sort</button>
+        </div>
     </div>
-    <div  class="displayPromt" id="displayPromt">  
-        <div class="ag-courses_box">
-            <div class="ag-courses_item">
-                <a href="#" class="courses-item_link">
-                    <div class="courses-item_bg"></div>
-                    <div class="ag-courses-item_title">
-                <input type="text" id="task-edit" placeholder="Enter a New Task">
+        <div  class="displayPromt" id="displayPromt">  
+                <div class="ag-courses_box">
+                    <div class="ag-courses_item">
+                        <a href="#" class="courses-item_link">
+                            <div class="courses-item_bg"></div>
+                            <div class="ag-courses-item_title">
+                        <input type="text" id="task-edit" placeholder="Enter a New Task">
+                    </div>
+                    <div class="courses-item_date-box">
+                        <span class="courses-item_date">
+                            <span class="task-buttons">
+                                <button id="submit-button" class="submit-button">Submit</button>
+                            </span>
+                        </span>
+                    </div>
+                </a>
             </div>
-            <div class="courses-item_date-box">
-                <span class="courses-item_date">
-                    <span class="task-buttons">
-                        <button id="submit-button" class="submit-button">Submit</button>
-                    </span>
-                </span>
-            </div>
-        </a>
+        </div>
     </div>
-</div>
-</div>
-  
-    <br>
-    <br>
-    <div class="listouter" id="listouter">
-    <ul id="tasks">
-        
+          
+        <br>
+        <br>
+        <div class="listouter" id="listouter">
+        <ul id="tasks">
+            
+        </ul>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
