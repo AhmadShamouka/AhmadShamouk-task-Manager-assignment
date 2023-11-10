@@ -38,6 +38,20 @@ function addTask() {
     `;
     taskList.appendChild(li);
 
+        
+    const markdone = document.getElementById('mark-button');
+    
+    markdone.addEventListener('click', mark);    
+    function mark() {
+        var x = document.querySelector(".mark-button");
+        if (x.innerHTML === "✔") {
+            x.innerHTML = "<b>x</b>";
+            x.style.backgroundColor = "red";
+        } else {
+            x.innerHTML = "✔";
+            x.style.backgroundColor = "Green"; 
+        }
+      }
 
     const deleteButton = li.querySelector('.delete-button');
     
