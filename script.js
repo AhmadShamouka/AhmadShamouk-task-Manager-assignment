@@ -39,3 +39,8 @@ function addTask() {
     taskList.appendChild(li);
 
 }
+taskInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        addTask();
+    }
+});
