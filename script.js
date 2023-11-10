@@ -38,6 +38,34 @@ function addTask() {
     `;
     taskList.appendChild(li);
 
+
+    const deleteButton = li.querySelector('.delete-button');
+    
+    deleteButton.addEventListener('click', function() {
+        li.remove();
+    });
+    const editButton=li.querySelector('.edit-button');
+    const displayPromt=document.getElementById('displayPromt')
+    editButton.addEventListener('click', function() {
+        displayPromt.style.display = 'block';
+        const submitButton = document.getElementById('submit-button');
+        const editInput = document.getElementById('task-edit');    
+
+        editInput.value = taskName;
+    
+        submitButton.addEventListener('click', function() {
+            const editedTaskName = editInput.value;
+            const taskNameSpan = li.querySelector('.task-name');
+            taskNameSpan.textContent = editedTaskName;
+            displayPromt.style.display = 'none';
+        });
+    });
+    
+    taskInput.value = '';
+
+
+
+
 }
 taskInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
