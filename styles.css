@@ -43,7 +43,7 @@
     gap: 20px;
   }
   .outerdiv{
-    height: 300px;
+    height: 350px;
     width: 100%;
     background-color: rgba(255,255,255,0.13);
     position: relative;
@@ -56,7 +56,11 @@
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px;
     margin-bottom: 20%;
+    
   
+  }
+  .priority{
+    font-size: 15px;
   }
   .outerdiv *{
     font-family: 'Poppins',sans-serif;
@@ -138,9 +142,9 @@
     cursor: pointer;
   }
   
-  span .task-name{
+  .task-name{
+    margin-left:5px ;
     text-decoration:solid;
-   
   }
   .ag-format-container { 
     cursor:default;
@@ -154,6 +158,10 @@
     display: flex;
     justify-content: center;
   
+  }
+  h6{
+    color: red;
+    
   }
   .ag-courses_item {
     width: 70%;
@@ -173,11 +181,17 @@
   .ag-courses-item_link:hover .ag-courses-item_bg {
     transform: scale(13);
   }
+
+  p{float: right;
+    color: red;
+  font-size: 14px;}
   .ag-courses-item_title {
+    display: flex; 
+    
+    align-items: center;
     cursor:default;
-    display: flex;
     text-decoration: none;
-    justify-content: center;
+    text-align: center;
     min-height: 87px;
     margin: 0 0 25px;
     font-weight: bold;
@@ -185,11 +199,16 @@
     font-size: 40px;
     color: #23a2f6;
     position: relative;
+  
+  }
+  .taskNametext{
+    text-align: left;
+    width: 80%;
   }
   .mark-button{
     cursor:default;
     margin-left: 10%;
-    margin-top: 5%;
+    
     border: thick;
     background-color: rgb(240, 0, 0);
     height: 25px;

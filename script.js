@@ -1,10 +1,12 @@
 const taskInput = document.getElementById('task-input');
+const priorityInput = document.getElementById('task-priority'); 
 const addTaskButton = document.getElementById('add-task');
 const taskList = document.getElementById('tasks');
 const displayPrompt = document.getElementById('displayPromt');
 const submitButton = document.getElementById('submit-button');
 const editInput = document.getElementById('task-edit');
 const sortbtn = document.getElementById('sort-task');
+
 const Sortarray = [];
 
 sortbtn.addEventListener('click', sortTask);
@@ -12,15 +14,15 @@ addTaskButton.addEventListener('click', addTask);
 
 function renderTask() {
     taskList.innerHTML = "";
-    Sortarray.forEach((taskName, index) => {
+    Sortarray.forEach((task, index) => {
         const li = document.createElement('li');
-        li.innerHTML = createTaskElement(taskName, index);
+        li.innerHTML = createTaskElement(task.name, task.priority, index);
         taskList.appendChild(li);
         addEventListeners(li, index);
     });
 }
 
-function createTaskElement(taskName, index) {
+function createTaskElement(taskName, priority, index) {
     return `
         <div class="ag-format-container">
             <div class="ag-courses_box">
@@ -28,7 +30,10 @@ function createTaskElement(taskName, index) {
                     <a href="#" class="ag-courses-item_link">
                         <div class="ag-courses-item_bg"></div>
                         <div class="ag-courses-item_title">
-                            <h1 class="task-name">${taskName}</h1>
+                        <div class="taskNametext">
+                            <h5 class="task-name">Task Name:${taskName}</h5>
+                        </div>
+                            <p class="task-priority">Priority: ${priority}</p>
                             <button class="mark-button" index="${index}"><b>x</b></button>
                         </div>
                         <div class="ag-courses-item_date-box">
@@ -36,30 +41,33 @@ function createTaskElement(taskName, index) {
                                 <span class="task-buttons">
                                     <button class="edit-button" index="${index}">Edit</button>
                                     <button class="delete-button" index="${index}">Delete</button>
-                                   
                                 </span>
                             </span>
                         </div>
                     </a>
                 </div>
             </div>
-        </div>`
-        ;
+        </div>`;
 }
 
 function addTask() {
+    
     const taskName = taskInput.value;
-    if (taskName === '') {
-        alert('Task name cannot be empty.');
+    const priority = priorityInput.value;
+
+    if (taskName === '' || priority === '') {
+        alert('Task name and priority cannot be empty.');
         return;
     }
 
-    Sortarray.push(taskName);
+    Sortarray.push({ name: taskName, priority: parseInt(priority) });
     renderTask();
     taskInput.value = '';
+    priorityInput.value = ''; 
 }
-function sortTask(){
-    Sortarray.sort();
+
+function sortTask() {
+    Sortarray.sort((a, b) => a.priority - b.priority); 
     renderTask();
 }
 
@@ -69,6 +77,7 @@ function addEventListeners(li, index) {
 
     const deleteButton = li.querySelector('.delete-button');
     deleteButton.addEventListener('click', () => deleteTask(li));
+
 
     const editButton = li.querySelector('.edit-button');
     editButton.addEventListener('click', () => editTask(li, Sortarray[index]));
@@ -89,9 +98,9 @@ function deleteTask(listItem) {
     listItem.remove();
 }
 
-function editTask(listItem, originalTaskName) {
+function editTask(listItem, taskInput) {
     displayPrompt.style.display = 'block';
-    editInput.value = originalTaskName;
+    editInput.value = "";
 
     submitButton.addEventListener('click', function () {
         const editedTaskName = editInput.value;
